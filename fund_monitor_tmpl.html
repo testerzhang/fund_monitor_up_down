@@ -1,0 +1,38 @@
+<h1>基金信息</h1>
+<div class="table-container-outer">
+    <div class="table-container-fade"></div>
+    <div class="table-container">
+        <table>
+
+            <tr style="width:200px; font-family:verdana; font-size:14px; font-weight:bold; text-align:center; background:#E0ECF9; border:1px solid #C1D9F3">
+                <th>基金</th>
+                <th>基金名</th>
+                <th>估算值</th>
+                <th>单位净值</th>
+                <th>估算值涨跌</th>
+                <th>获取时间</th>
+            </tr>
+
+            {% for fund_list in fund_lists %}
+            <tr style="width:120px; font-family:verdana; font-size:14px; font-weight:bold; text-align:center; border:1px solid #C1D9F3">
+
+                {% if fund_list['zhang_die']| float < 0 %}
+                    <td><font color="##00FF00">{{ fund_list['fund_code'] }}</font></td>
+                    <td><font color="##00FF00">{{ fund_list['fund_name'] }}</font></td>
+                    <td><font color="##00FF00">{{ fund_list['gsz'] }}</font></td>
+                    <td><font color="##00FF00">{{ fund_list['jz'] }}</font></td>
+                    <td><font color="##00FF00">⏬ {{ fund_list['zhang_die'] }}</font></td>
+                    <td><font color="##00FF00">{{ fund_list['gsz_time'] }}</font></td>
+                {% else %}
+                    <td><font color="#FF0000">{{ fund_list['fund_code'] }}</font></td>
+                    <td><font color="#FF0000">{{ fund_list['fund_name'] }}</font></td>
+                    <td><font color="#FF0000">{{ fund_list['gsz'] }}</font></td>
+                    <td><font color="#FF0000">{{ fund_list['jz'] }}</font></td>
+                    <td><font color="#FF0000">🔼 {{ fund_list['zhang_die'] }}</font></td>
+                    <td><font color="#FF0000">{{ fund_list['gsz_time'] }}</font></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
